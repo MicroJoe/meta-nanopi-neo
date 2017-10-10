@@ -15,6 +15,8 @@ SYSTEM_TOOLS_INSTALL = " \
 	cpuburn-neon \
 	memtester \
 	sysbench \
+	htop \
+	tmux \
 "
 
 DEV_TOOLS_INSTALL = " \
@@ -28,12 +30,12 @@ MEDIA_TOOLS_INSTALL = " \
 "
 
 GRAPHICS_LIBS = " \
-"  
+"
 
 UTILITIES_INSTALL = " \
 	coreutils \
 "
- 
+
 IMAGE_INSTALL += " \
   ${FIRMWARE_INSTALL} \
   ${SYSTEM_TOOLS_INSTALL} \

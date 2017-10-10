@@ -13,25 +13,19 @@ RDEPENDS_kernel-base += "kernel-devicetree"
 # http://lists.openembedded.org/pipermail/openembedded-core/2015-May/104616.html
 KCONFIG_MODE="--alldefconfig"
 
-DEFAULT_PREFERENCE = "-1"
+DEFAULT_PREFERENCE = "1"
 
 KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT}"
 
-PV = "4.9.4"
-SRCREV_pn-${PN} = "be82da9c1dba76aa90d6c6ef0e94f77393c5385c"
+PV = "4.13"
+SRCREV_pn-${PN} = "c173fe35989ed23e9f14379550a056969ef6140c"
 
 S = "${WORKDIR}/git"
 
 FILESEXTRAPATHS_append := ":${THISDIR}/files"
 
-SRC_URI = "git://github.com/erazor83/linux.git;protocol=git;branch=orange-pi-4.9 \
+SRC_URI = "git://github.com/megous/linux.git;protocol=git;branch=orange-pi-4.13 \
 	file://defconfig \
-	file://THS.cfg \
-	file://EMAC.cfg \
-	file://AP6212.cfg \
-	file://sun8i-h3.dtsi.patch \
-	file://sun8i-h3-nanopi.dtsi.patch \
-	file://sun8i-h3-nanopi-neo-air.dts.patch \
 "
 
 do_install_prepend() {

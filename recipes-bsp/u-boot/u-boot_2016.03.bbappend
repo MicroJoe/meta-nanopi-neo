@@ -22,8 +22,10 @@ FILES_${PN} += " \
 	/boot/u-boot-sunxi-with-spl.bin \
 "
 
+SPL_BINARY="u-boot-sunxi-with-spl.bin"
+
 do_configure_prepend() {
-	echo "CONFIG_FS_EXT4=y" >> ${S}/configs/nanopi_neo_air_defconfig
-	echo "CONFIG_SUN8I_EMAC=y" >> ${S}/configs/nanopi_neo_air_defconfig
+	echo "CONFIG_FS_EXT4=y" >> ${S}/configs/nanopi_neo_defconfig
+	echo "CONFIG_SUN8I_EMAC=y" >> ${S}/configs/nanopi_neo_defconfig
 }
 
