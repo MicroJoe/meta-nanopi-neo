@@ -1,0 +1,31 @@
+From 4dd2ab56211d0a155f72a37eb57265c6b83f530c Mon Sep 17 00:00:00 2001
+From: Romain Porte <microjoe@microjoe.org>
+Date: Thu, 4 Jan 2018 21:42:03 +0100
+Subject: [PATCH] Use emac node for allwinner,leds-active-low
+
+Currently this device-tree entry is checked in the phy
+node, but actual device trees are declaring the
+"allwinner,leds-active-low" inside of the emac node.
+
+This patch fixes inverted Ethernet LEDs on NanoPi Neo,
+but probably other boards too.
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+index fffd6d5fc907..9184bfcd5858 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+@@ -657,7 +657,7 @@ static int sun8i_dwmac_set_syscon(struct stmmac_priv *priv)
+ 			reg &= ~H3_EPHY_SHUTDOWN;
+ 			dev_dbg(priv->device, "Select internal_phy %x\n", reg);
+ 
+-			if (of_property_read_bool(priv->plat->phy_node,
++			if (of_property_read_bool(node,
+ 						  "allwinner,leds-active-low"))
+ 				reg |= H3_EPHY_LED_POL;
+ 			else
+-- 
+2.11.0
+

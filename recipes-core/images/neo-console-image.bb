@@ -1,11 +1,15 @@
 DESCRIPTION = "A basic console image for NanoPi NEO boards."
 LICENSE = "MIT"
 
-IMAGE_FEATURES += "splash package-management ssh-server-openssh"
+IMAGE_FEATURES += "package-management ssh-server-dropbear"
 
-IMAGE_LINGUAS = "en-us"
+#IMAGE_LINGUAS = "en-us"
 
 inherit core-image
+
+CORE_IMAGE_BASE_INSTALL_remove = " \
+	packagegroup-base-extended \
+"
 
 FIRMWARE_INSTALL = " \
 "
@@ -20,10 +24,11 @@ SYSTEM_TOOLS_INSTALL = " \
 "
 
 DEV_TOOLS_INSTALL = " \
-	picocom \
 "
 
 NETWORK_TOOLS_INSTALL = " \
+	wget \
+	curl \
 "
 
 MEDIA_TOOLS_INSTALL = " \
