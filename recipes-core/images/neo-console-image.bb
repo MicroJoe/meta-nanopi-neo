@@ -11,6 +11,9 @@ CORE_IMAGE_BASE_INSTALL_remove = " \
 	packagegroup-base-extended \
 "
 
+# Use embedded libc musl insteal of glibc
+TCLIBC = "musl"
+
 FIRMWARE_INSTALL = " \
 "
 
