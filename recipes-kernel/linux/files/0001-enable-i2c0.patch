@@ -1,0 +1,29 @@
+From 0df368d510ec2c13d7d99ae10540edf34d0cf8a4 Mon Sep 17 00:00:00 2001
+From: Romain Porte <microjoe@microjoe.org>
+Date: Sun, 7 Jan 2018 13:36:54 +0100
+Subject: [PATCH] enable i2c0
+
+---
+ arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts b/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
+index 78f6c24952dd..2534ba203372 100644
+--- a/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
++++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
+@@ -53,3 +53,12 @@
+ 	allwinner,leds-active-low;
+ 	status = "okay";
+ };
++
++&i2c0 {
++	status = "okay";
++
++	htu21@40 {
++		compatible = "meas,htu21";
++		reg = <0x40>;
++	};
++};
+-- 
+2.11.0
+

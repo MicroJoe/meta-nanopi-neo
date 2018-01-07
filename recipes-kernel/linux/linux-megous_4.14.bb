@@ -27,6 +27,7 @@ FILESEXTRAPATHS_append := ":${THISDIR}/files"
 SRC_URI = "git://github.com/megous/linux.git;protocol=git;branch=orange-pi-4.14 \
 	file://defconfig \
 	file://0001-Use-emac-node-for-allwinner-leds-active-low.patch \
+	file://0001-enable-i2c0.patch \
 "
 
 do_install_prepend() {
