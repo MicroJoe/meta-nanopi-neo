@@ -1,17 +1,41 @@
-From 0df368d510ec2c13d7d99ae10540edf34d0cf8a4 Mon Sep 17 00:00:00 2001
+From 18ca27436d610548ad63237bf2a87211edc2db76 Mon Sep 17 00:00:00 2001
 From: Romain Porte <microjoe@microjoe.org>
 Date: Sun, 7 Jan 2018 13:36:54 +0100
 Subject: [PATCH] enable i2c0
 
 ---
- arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts | 35 +++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
 diff --git a/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts b/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
-index 78f6c24952dd..2534ba203372 100644
+index 78f6c24952dd..0993bb24e5f7 100644
 --- a/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
 +++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo.dts
-@@ -53,3 +53,12 @@
+@@ -45,6 +45,23 @@
+ / {
+ 	model = "FriendlyARM NanoPi NEO";
+ 	compatible = "friendlyarm,nanopi-neo", "allwinner,sun8i-h3";
++
++
++	auxdisplay {
++		compatible = "hit,hd44780";
++
++		data-gpios = <&pcf8574 2 GPIO_ACTIVE_HIGH>,
++			<&pcf8574 3 GPIO_ACTIVE_HIGH>,
++			<&pcf8574 4 GPIO_ACTIVE_HIGH>,
++			<&pcf8574 5 GPIO_ACTIVE_HIGH>;
++		rs-gpios = <&pcf8574 0 GPIO_ACTIVE_HIGH>;
++		rw-gpios = <&pcf8574 1 GPIO_ACTIVE_HIGH>;
++		enable-gpios = <&pcf8574 2 GPIO_ACTIVE_HIGH>;
++		backlight-gpios = <&pcf8574 7 GPIO_ACTIVE_HIGH>;
++
++		display-height-chars = <2>;
++		display-width-chars = <16>;
++	};
+ };
+ 
+ &emac {
+@@ -53,3 +70,21 @@
  	allwinner,leds-active-low;
  	status = "okay";
  };
@@ -23,6 +47,15 @@ index 78f6c24952dd..2534ba203372 100644
 +		compatible = "meas,htu21";
 +		reg = <0x40>;
 +	};
++
++
++	pcf8574: gpio@3f {
++		compatible = "nxp,pcf8574a";
++		reg = <0x3f>;
++		gpio-controller;
++		#gpio-cells = <2>;
++	};
++
 +};
 -- 
 2.11.0
