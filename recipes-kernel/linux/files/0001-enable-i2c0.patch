@@ -20,20 +20,20 @@ index 78f6c24952dd..0993bb24e5f7 100644
 +	auxdisplay {
 +		compatible = "hit,hd44780";
 +
-+		data-gpios = <&pcf8574 2 GPIO_ACTIVE_HIGH>,
-+			<&pcf8574 3 GPIO_ACTIVE_HIGH>,
-+			<&pcf8574 4 GPIO_ACTIVE_HIGH>,
-+			<&pcf8574 5 GPIO_ACTIVE_HIGH>;
++		data-gpios = <&pcf8574 4 GPIO_ACTIVE_HIGH>,
++			<&pcf8574 5 GPIO_ACTIVE_HIGH>,
++			<&pcf8574 6 GPIO_ACTIVE_HIGH>,
++			<&pcf8574 7 GPIO_ACTIVE_HIGH>;
 +		rs-gpios = <&pcf8574 0 GPIO_ACTIVE_HIGH>;
 +		rw-gpios = <&pcf8574 1 GPIO_ACTIVE_HIGH>;
 +		enable-gpios = <&pcf8574 2 GPIO_ACTIVE_HIGH>;
-+		backlight-gpios = <&pcf8574 7 GPIO_ACTIVE_HIGH>;
++		backlight-gpios = <&pcf8574 3 GPIO_ACTIVE_HIGH>;
 +
 +		display-height-chars = <2>;
 +		display-width-chars = <16>;
 +	};
  };
- 
+
  &emac {
 @@ -53,3 +70,21 @@
  	allwinner,leds-active-low;
@@ -57,6 +57,6 @@ index 78f6c24952dd..0993bb24e5f7 100644
 +	};
 +
 +};
--- 
+--
 2.11.0
 
